@@ -6,14 +6,16 @@ const UserDetails = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+useEffect(() => {
     setLoading(true);
-    fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setUser(data);
-        setLoading(false);
-      });
+    setTimeout(() => {
+      fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setUser(data);
+          setLoading(false);
+        });
+    }, 500); 
   }, [id]);
 
   if (loading) {
